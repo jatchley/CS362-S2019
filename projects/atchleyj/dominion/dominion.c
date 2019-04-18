@@ -1394,12 +1394,13 @@ int updateCoins(int player, struct gameState *state, int bonus)
   return 0;
 }
 
-// TODO: Introduce a bug and then test (only for 4 of these though)
 int smithyEffect(int currentPlayer, struct gameState *state, int handPos)
 {
   int i;
   // Draw 3 cards
-  for (i = 0; i < 3; i++)
+  // TODO: This is a bug. Original code on line below
+  // for (i = 0; i < 3; i++)
+  for (i = 0; i < 1; i++)
   {
     drawCard(currentPlayer, state);
   }
@@ -1409,7 +1410,6 @@ int smithyEffect(int currentPlayer, struct gameState *state, int handPos)
   return 0;
 }
 
-// TODO: Introduce a bug and then test (only for 4 of these though)
 int adventurerEffect(int currentPlayer, struct gameState *state)
 {
   int drawntreasure = 0;
@@ -1423,10 +1423,13 @@ int adventurerEffect(int currentPlayer, struct gameState *state)
     { //if the deck is empty we need to shuffle discard and add to deck
       shuffle(currentPlayer, state);
     }
+
     drawCard(currentPlayer, state);
     cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer] - 1]; //top card of hand is most recently drawn card.
     if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
+    {
       drawntreasure++;
+    }
     else
     {
       temphand[z] = cardDrawn;
@@ -1437,13 +1440,13 @@ int adventurerEffect(int currentPlayer, struct gameState *state)
   while (z - 1 >= 0)
   {
     state->discard[currentPlayer][state->discardCount[currentPlayer]++] = temphand[z - 1]; // discard all cards in play that have been drawn
-    z = z - 1;
+    // TODO: This is a bug. The below line should be uncommented to revert behavior
+    // z = z - 1;
   }
 
   return 0;
 }
 
-// TODO: Introduce a bug and then test (only for 4 of these though)
 int villageEffect(int currentPlayer, struct gameState *state, int handPos)
 {
   // Draw 1 card
@@ -1453,11 +1456,12 @@ int villageEffect(int currentPlayer, struct gameState *state, int handPos)
   state->numActions = state->numActions + 2;
 
   // Discard played card from hand
-  discardCard(handPos, currentPlayer, state, 0);
+  // TODO: This is a bug. Correct line of code is below
+  // discardCard(handPos, currentPlayer, state, 0);
+  discardCard(0, 0, state, 1);
   return 0;
 }
 
-// TODO: Introduce a bug and then test (only for 4 of these though)
 int greatHallEffect(int currentPlayer, struct gameState *state, int handPos)
 {
   // Draw 1 card
@@ -1471,7 +1475,6 @@ int greatHallEffect(int currentPlayer, struct gameState *state, int handPos)
   return 0;
 }
 
-// TODO: Introduce a bug and then test (only for 4 of these though)
 int councilRoomEffect(int currentPlayer, struct gameState *state, int handPos)
 {
   // Draw 4 Cards
@@ -1487,7 +1490,9 @@ int councilRoomEffect(int currentPlayer, struct gameState *state, int handPos)
   // Each other player draws a card
   for (i = 0; i < state->numPlayers; i++)
   {
-    if (i != currentPlayer)
+    // TODO: This is a bug. Correct line of code is below
+    //if (i != currentPlayer)
+    if (i == currentPlayer)
     {
       drawCard(i, state);
     }
