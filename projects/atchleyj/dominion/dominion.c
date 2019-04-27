@@ -312,7 +312,6 @@ int buyCard(int supplyPos, struct gameState *state)
   else
   {
     state->phase = 1;
-    //state->supplyCount[supplyPos]--;
     gainCard(supplyPos, state, 0, who); //card goes in discard, this might be wrong.. (2 means goes into hand, 0 goes into discard)
 
     state->coins = (state->coins) - (getCost(supplyPos));
@@ -320,9 +319,6 @@ int buyCard(int supplyPos, struct gameState *state)
     if (DEBUG)
       printf("You bought card number %d for %d coins. You now have %d buys and %d coins.\n", supplyPos, getCost(supplyPos), state->numBuys, state->coins);
   }
-
-  //state->discard[who][state->discardCount[who]] = supplyPos;
-  //state->discardCount[who]++;
 
   return 0;
 }
@@ -615,12 +611,12 @@ int drawCard(int player, struct gameState *state)
 {
   int count;
   int deckCounter;
+  // Deck is empty
   if (state->deckCount[player] <= 0)
-  { //Deck is empty
-
-    //Step 1 Shuffle the discard pile back into a deck
+  {
+    // Step 1: Shuffle the discard pile back into a deck
+    // Move discard to deck
     int i;
-    //Move discard to deck
     for (i = 0; i < state->discardCount[player]; i++)
     {
       state->deck[player][i] = state->discard[player][i];
@@ -628,49 +624,41 @@ int drawCard(int player, struct gameState *state)
     }
 
     state->deckCount[player] = state->discardCount[player];
-    state->discardCount[player] = 0; //Reset discard
-
-    //Shufffle the deck
-    shuffle(player, state); //Shuffle the deck up and make it so that we can draw
-
-    if (DEBUG)
-    { //Debug statements
-      printf("Deck count now: %d\n", state->deckCount[player]);
-    }
-
+    // Reset discard
     state->discardCount[player] = 0;
 
-    //Step 2 Draw Card
-    count = state->handCount[player]; //Get current player's hand count
+    // Shufffle the deck
+    shuffle(player, state);
+    state->discardCount[player] = 0;
 
-    if (DEBUG)
-    { //Debug statements
-      printf("Current hand count: %d\n", count);
-    }
-
-    deckCounter = state->deckCount[player]; //Create a holder for the deck count
+    // Step 2: Draw Card
+    // Get current player's hand count
+    count = state->handCount[player];
+    // Create a holder for the deck count
+    deckCounter = state->deckCount[player];
 
     if (deckCounter == 0)
+    {
       return -1;
-
-    state->hand[player][count] = state->deck[player][deckCounter - 1]; //Add card to hand
+    }
+    // Add card to hand
+    state->hand[player][count] = state->deck[player][deckCounter - 1];
     state->deckCount[player]--;
-    state->handCount[player]++; //Increment hand count
+    // Increment hand count
+    state->handCount[player]++;
   }
-
   else
   {
-    int count = state->handCount[player]; //Get current hand count for player
-    int deckCounter;
-    if (DEBUG)
-    { //Debug statements
-      printf("Current hand count: %d\n", count);
-    }
+    // Get current hand count for player
+    int count = state->handCount[player];
 
-    deckCounter = state->deckCount[player];                            //Create holder for the deck count
-    state->hand[player][count] = state->deck[player][deckCounter - 1]; //Add card to the hand
+    // Create holder for the deck count
+    deckCounter = state->deckCount[player];
+    // Add card to the hand
+    state->hand[player][count] = state->deck[player][deckCounter - 1];
     state->deckCount[player]--;
-    state->handCount[player]++; //Increment hand count
+    // Increment hand count
+    state->handCount[player]++;
   }
 
   return 0;
