@@ -9,7 +9,7 @@
 #define NOISY_TEST 1
 
 // Test for discardCard function
-// TODO: Finish this
+// TODO: Print success at end
 // TODO: Look over this one more time to make sure it is correct for submission requirements
 int main()
 {
@@ -31,56 +31,31 @@ int main()
   discardCard(0, currPlayerPos, &state, 0);
   if (NOISY_TEST == 1)
     printf("Current hand count: %d cards in hand.\n", state.handCount[currPlayerPos]);
-  assert(state.handCount[currPlayerPos] == expectedCount && "Handcount was not 4 after discarding one card after game setup");
-  // Test that discarded card was not trashed
-  assert(state.playedCards[state.playedCardCount] == state.hand[currPlayerPos][0] && "Top of PlayedCards does not match card that was discarded");
+  if (state.handCount[currPlayerPos] == expectedCount)
+    printf("discardCard(): PASS when test hand count on discarding one card after game setup\n");
+  else
+    printf("discardCard(): FAIL when test hand count on discarding one card after game setup\n");
 
-  // Test trashing a card 
+  // Test that discarded card was not trashed
+  if (state.playedCards[state.playedCardCount] == state.hand[currPlayerPos][0])
+    printf("discardCard(): PASS when test discarded card was not trashed on discarding one card after game setup\n");
+  else
+    printf("discardCard(): FAIL when test discarded card was not trashed on discarding one card after game setup\n");
+
+  // Test trashing a card
   int expectedCount = 3;
   discardCard(0, currPlayerPos, &state, 1);
   if (NOISY_TEST == 1)
     printf("Current hand count: %d cards in hand.\n", state.handCount[currPlayerPos]);
-  assert(state.handCount[currPlayerPos] == expectedCount && "Handcount was not 3 after discarding one additional card after game setup");
-  // Test that discarded card was trashed
-  assert(state.playedCards[state.playedCardCount] != state.hand[currPlayerPos][0] && "Top of PlayedCards matches card that was trashed");
-
-  return 0;
-}
-
-// TODO: Delete, reference only
-int discardCard(int handPos, int currentPlayer, struct gameState *state, int trashFlag)
-{
-  //if card is not trashed, added to Played pile
-  if (trashFlag < 1)
-  {
-    //add card to played pile
-    state->playedCards[state->playedCardCount] = state->hand[currentPlayer][handPos];
-    state->playedCardCount++;
-  }
-
-  //set played card to -1
-  state->hand[currentPlayer][handPos] = -1;
-
-  //remove card from player's hand
-  if (handPos == (state->handCount[currentPlayer] - 1)) //last card in hand array is played
-  {
-    //reduce number of cards in hand
-    state->handCount[currentPlayer]--;
-  }
-  else if (state->handCount[currentPlayer] == 1) //only one card in hand
-  {
-    //reduce number of cards in hand
-    state->handCount[currentPlayer]--;
-  }
+  if (state.handCount[currPlayerPos] == expectedCount)
+    printf("discardCard(): PASS when test discarding one additional card after game setup\n");
   else
-  {
-    //replace discarded card with last card in hand
-    state->hand[currentPlayer][handPos] = state->hand[currentPlayer][(state->handCount[currentPlayer] - 1)];
-    //set last card to -1
-    state->hand[currentPlayer][state->handCount[currentPlayer] - 1] = -1;
-    //reduce number of cards in hand
-    state->handCount[currentPlayer]--;
-  }
+    printf("discardCard(): FAIL when test discarding one additional card after game setup\n");
+  // Test that discarded card was trashed
+  if (state.playedCards[state.playedCardCount] == state.hand[currPlayerPos][0])
+    printf("discardCard(): PASS when test discarded card was trashed on discarding one card after game setup\n");
+  else
+    printf("discardCard(): FAIL when test discarded card was trashed on discarding one card after game setup\n");
 
   return 0;
 }

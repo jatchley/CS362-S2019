@@ -29,7 +29,10 @@ int main()
   expectedCount = 5;
   if (NOISY_TEST == 1)
     printf("Current hand count: %d cards in hand.\n", state.handCount[currPlayerPos]);
-  assert(state.handCount[currPlayerPos] == expectedCount && "Handcount was not 5 after drawing 5 cards on game setup");
+  if (state.handCount[currPlayerPos] == expectedCount)
+    printf("drawCard(): PASS when test hand count on game setup\n");
+  else
+    printf("drawCard(): FAIL when test hand count on game setup\n");
 
   // Clear the game state and initialize a new game instance
   // Test draw 1 card from normal deck
@@ -43,13 +46,19 @@ int main()
   }
   if (NOISY_TEST == 1)
     printf("Current hand count: %d cards in hand.\n", state.handCount[currPlayerPos]);
-  assert(state.handCount[currPlayerPos] == expectedCount && "Handcount was not 0 after discarding all cards");
+  if (state.handCount[currPlayerPos] == expectedCount)
+    printf("drawCard(): PASS when test hand count on discarding all cards\n");
+  else
+    printf("drawCard(): FAIL when test hand count on discarding all cards\n");
   // Draw 1 card
   expectedCount = 1;
   drawCard(currPlayerPos, &state);
   if (NOISY_TEST == 1)
     printf("Current hand count: %d cards in hand.\n", state.handCount[currPlayerPos]);
-  assert(state.handCount[currPlayerPos] == expectedCount && "Handcount was not 1 after drawing 1 card");
+  if (state.handCount[currPlayerPos] == expectedCount)
+    printf("drawCard(): PASS when test hand count on drawing 1 card\n");
+  else
+    printf("drawCard(): FAIL when test hand count on drawing 1 card\n");
 
   // Test draw all cards from normal deck
   // Clear the game state and initialize a new game instance
@@ -62,7 +71,10 @@ int main()
   }
   if (NOISY_TEST == 1)
     printf("Current hand count: %d cards in hand.\n", state.handCount[currPlayerPos]);
-  assert(state.handCount[currPlayerPos] == expectedCount && "Handcount was not 10 after drawing 10 cards");
+  if (state.handCount[currPlayerPos] == expectedCount)
+    printf("drawCard(): PASS when test hand count on drawing more cards than are in the deck\n");
+  else
+    printf("drawCard(): FAIL when test hand count on drawing more cards than are in the deck\n");
 
   return 0;
 }
