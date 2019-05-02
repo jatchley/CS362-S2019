@@ -1407,7 +1407,9 @@ int adventurerEffect(int currentPlayer, struct gameState *state)
 
   while (drawntreasure < 2)
   {
-    if (state->deckCount[currentPlayer] < 1)
+    // TODO: This is a bug. The below line should be uncommented to revert behavior
+    // if (state->deckCount[currentPlayer] < 1)
+    if (state->deckCount[currentPlayer] < 2)
     { //if the deck is empty we need to shuffle discard and add to deck
       shuffle(currentPlayer, state);
     }
@@ -1428,8 +1430,7 @@ int adventurerEffect(int currentPlayer, struct gameState *state)
   while (z - 1 >= 0)
   {
     state->discard[currentPlayer][state->discardCount[currentPlayer]++] = temphand[z - 1]; // discard all cards in play that have been drawn
-    // TODO: This is a bug. The below line should be uncommented to revert behavior
-    // z = z - 1;
+    z = z - 1;
   }
 
   return 0;

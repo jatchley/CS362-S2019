@@ -27,8 +27,6 @@ int main()
   memset(&state, 23, sizeof(struct gameState));
   initializeGame(numPlayers, kingdomCards, randSeed, &state);
   expectedCount = 5;
-  if (NOISY_TEST == 1)
-    printf("Current hand count: %d cards in hand.\n", state.handCount[currPlayerPos]);
   if (state.handCount[currPlayerPos] == expectedCount)
     printf("drawCard(): PASS when test hand count on game setup\n");
   else
@@ -44,8 +42,6 @@ int main()
   {
     discardCard(i, currPlayerPos, &state, 0);
   }
-  if (NOISY_TEST == 1)
-    printf("Current hand count: %d cards in hand.\n", state.handCount[currPlayerPos]);
   if (state.handCount[currPlayerPos] == expectedCount)
     printf("drawCard(): PASS when test hand count on discarding all cards\n");
   else
@@ -53,8 +49,6 @@ int main()
   // Draw 1 card
   expectedCount = 1;
   drawCard(currPlayerPos, &state);
-  if (NOISY_TEST == 1)
-    printf("Current hand count: %d cards in hand.\n", state.handCount[currPlayerPos]);
   if (state.handCount[currPlayerPos] == expectedCount)
     printf("drawCard(): PASS when test hand count on drawing 1 card\n");
   else
@@ -69,8 +63,7 @@ int main()
   {
     drawCard(currPlayerPos, &state);
   }
-  if (NOISY_TEST == 1)
-    printf("Current hand count: %d cards in hand.\n", state.handCount[currPlayerPos]);
+
   if (state.handCount[currPlayerPos] == expectedCount)
     printf("drawCard(): PASS when test hand count on drawing more cards than are in the deck\n");
   else
