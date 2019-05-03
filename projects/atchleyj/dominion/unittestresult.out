@@ -1,0 +1,66 @@
+----------------- Testing Unit: drawCard() ----------------
+drawCard(): PASS when test hand count on game setup
+drawCard(): PASS when test hand count on discarding all cards
+drawCard(): PASS when test hand count on drawing 1 card
+drawCard(): PASS when test hand count on drawing more cards than are in the deck
+File 'dominion.c'
+Lines executed:18.94% of 586
+Creating 'dominion.c.gcov'
+
+unittest2.c:
+----------------- Testing Unit: discardCard() ----------------
+discardCard(): PASS when test hand count on discarding one card after game setup
+discardCard(): PASS when test discarded card was not trashed on discarding one card after game setup
+discardCard(): PASS when test discarding one additional card after game setup
+discardCard(): PASS when test discarded card was trashed on discarding one card after game setup
+File 'dominion.c'
+Lines executed:17.06% of 586
+Creating 'dominion.c.gcov'
+
+unittest3.c:
+----------------- Testing Unit: isGameOver() ----------------
+isGameOver(): PASS when test empty supply count of Province cards
+isGameOver(): PASS when test empty supply count of only one stack
+isGameOver(): PASS when test empty supply count of only two stacks
+isGameOver(): PASS when test empty supply count of three stacks
+isGameOver(): PASS when test no empty stacks
+File 'dominion.c'
+Lines executed:16.89% of 586
+Creating 'dominion.c.gcov'
+
+unittest4.c:
+----------------- Testing Unit: endTurn() ----------------
+endTurn(): PASS when test turn has changed to next player
+endTurn(): PASS when test player whose turn ended has an empty hand
+File 'dominion.c'
+Lines executed:18.77% of 586
+Creating 'dominion.c.gcov'
+
+cardtest1.c:
+----------------- Testing Card: smithy ----------------
+cardEffect(smithy): FAIL when test hand count after smithy is played
+File 'dominion.c'
+Lines executed:19.62% of 586
+Creating 'dominion.c.gcov'
+
+cardtest2.c:
+----------------- Testing Card: adventurer ----------------
+cardEffect(adventurer): PASS when test hand count after adventurer is played
+File 'dominion.c'
+Lines executed:18.77% of 586
+Creating 'dominion.c.gcov'
+
+cardtest3.c:
+----------------- Testing Card: village ----------------
+cardEffect(village): PASS when test action count after village is played
+File 'dominion.c'
+Lines executed:19.28% of 586
+Creating 'dominion.c.gcov'
+
+cardtest4.c:
+----------------- Testing Card: greatHall ----------------
+cardEffect(greatHall): PASS when test action count after greatHall is played
+File 'dominion.c'
+Lines executed:19.62% of 586
+Creating 'dominion.c.gcov'
+

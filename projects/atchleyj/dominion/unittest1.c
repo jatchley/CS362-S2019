@@ -5,11 +5,6 @@
 #include <assert.h>
 #include "rngs.h"
 
-// set NOISY_TEST to 0 to remove printfs from output
-#define NOISY_TEST 0
-
-// TODO: Print success at end
-// TODO: Look over this one more time to make sure it is correct for submission requirements
 // Test for drawCard function
 int main()
 {
@@ -21,6 +16,8 @@ int main()
   int numPlayers = 2;
   int expectedCount = 0;
   int randSeed = 1000;
+
+  printf("----------------- Testing Unit: drawCard() ----------------\n");
 
   // Test draw 5 cards on initialize
   // Clear the game state and initialize a new game instance

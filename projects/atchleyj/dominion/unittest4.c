@@ -5,13 +5,7 @@
 #include <assert.h>
 #include "rngs.h"
 
-// set NOISY_TEST to 0 to remove printfs from output
-#define NOISY_TEST 1
-
 // Test for endTurn function
-// TODO: Finish this
-// TODO: Print success at end
-// TODO: Look over this one more time to make sure it is correct for submission requirements
 int main()
 {
   // Declare test variables
@@ -22,6 +16,8 @@ int main()
   int numPlayers = 2;
   int expectedCount = 0;
   int randSeed = 1000;
+
+printf("----------------- Testing Unit: endTurn() ----------------\n");
 
   // Clear the game state and initialize a new game instance
   memset(&state, 23, sizeof(struct gameState));
@@ -35,7 +31,7 @@ int main()
     printf("endTurn(): FAIL when test turn has changed to next player\n");
 
   // Test that player whose turn ended has an empty hand
-  if (state.handCount[currPlayerPos] = 0)
+  if (state.handCount[currPlayerPos] == 0)
     printf("endTurn(): PASS when test player whose turn ended has an empty hand\n");
   else
     printf("endTurn(): FAIL when test player whose turn ended has an empty hand\n");

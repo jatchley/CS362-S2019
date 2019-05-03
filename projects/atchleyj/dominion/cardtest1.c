@@ -5,13 +5,7 @@
 #include <assert.h>
 #include "rngs.h"
 
-// set NOISY_TEST to 0 to remove printfs from output
-#define NOISY_TEST 1
-
 // Test for smithy card
-// TODO: Finish this
-// TODO: Print success at end
-// TODO: Look over this one more time to make sure it is correct for submission requirements
 int main()
 {
   // Declare test variables
@@ -23,6 +17,8 @@ int main()
   int expectedCount = 0;
   int randSeed = 1000;
 
+  printf("----------------- Testing Card: smithy ----------------\n");
+
   // Clear the game state and initialize a new game instance
   memset(&state, 23, sizeof(struct gameState));
   initializeGame(numPlayers, kingdomCards, randSeed, &state);
@@ -31,8 +27,8 @@ int main()
   cardEffect(smithy, -1, -1, -1, &state, 0, 0);
 
   // Test play of smithy card for first player immediately after game startup
-  // Should be 7 (5 on start + 3 drawn - 1 for discard of smithy)
-  expectedCount = 7;
+  // Should be 8 (5 on start + 3 drawn)
+  expectedCount = 8;
   if (state.handCount[currPlayerPos] == expectedCount)
     printf("cardEffect(smithy): PASS when test hand count after smithy is played\n");
   else

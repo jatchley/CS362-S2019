@@ -5,13 +5,7 @@
 #include <assert.h>
 #include "rngs.h"
 
-// set NOISY_TEST to 0 to remove printfs from output
-#define NOISY_TEST 1
-
 // Test for isGameOver function
-// TODO: Finish this
-// TODO: Print success at end
-// TODO: Look over this one more time to make sure it is correct for submission requirements
 int main()
 {
   // Declare test variables
@@ -22,6 +16,8 @@ int main()
   int numPlayers = 2;
   int expectedCount = 0;
   int randSeed = 1000;
+
+printf("----------------- Testing Unit: isGameOver() ----------------\n");
 
   // Clear the game state and initialize a new game instance
   memset(&state, 23, sizeof(struct gameState));

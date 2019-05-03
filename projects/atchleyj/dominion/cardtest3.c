@@ -5,13 +5,7 @@
 #include <assert.h>
 #include "rngs.h"
 
-// set NOISY_TEST to 0 to remove printfs from output
-#define NOISY_TEST 1
-
 // Test for village card
-// TODO: Finish this
-// TODO: Print success at end
-// TODO: Look over this one more time to make sure it is correct for submission requirements
 int main()
 {
   // Declare test variables
@@ -21,6 +15,8 @@ int main()
   int kingdomCards[10] = {adventurer, council_room, feast, gardens, mine, remodel, smithy, village, baron, great_hall};
   int numPlayers = 2;
   int randSeed = 1000;
+
+  printf("----------------- Testing Card: village ----------------\n");
 
   // Clear the game state and initialize a new game instance
   memset(&state, 23, sizeof(struct gameState));
