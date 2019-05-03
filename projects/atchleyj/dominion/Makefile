@@ -39,42 +39,42 @@ unittestresults: unittest1.c unittest2.c unittest3.c unittest4.c cardtest1.c car
 	echo "unittest1.c:" >> unittestresult.out
 	gcc -o unittest1 -g  rngs.c dominion.c unittest1.c $(CFLAGS)
 	./unittest1 &> unittestresult.out
-	gcov dominion.c >> unittestresult.out
+	gcov -f -b dominion.c >> unittestresult.out
 
 	echo "unittest2.c:" >> unittestresult.out
 	gcc -o unittest2 -g  rngs.c dominion.c unittest2.c $(CFLAGS)
 	./unittest2 >> unittestresult.out
-	gcov dominion.c >> unittestresult.out
+	gcov -f -b dominion.c >> unittestresult.out
 
 	echo "unittest3.c:" >> unittestresult.out
 	gcc -o unittest3 -g  rngs.c dominion.c unittest3.c $(CFLAGS)
 	./unittest3 >> unittestresult.out
-	gcov dominion.c >> unittestresult.out
+	gcov -f -b dominion.c >> unittestresult.out
 
 	echo "unittest4.c:" >> unittestresult.out
 	gcc -o unittest4 -g  rngs.c dominion.c unittest4.c $(CFLAGS)
 	./unittest4 >> unittestresult.out
-	gcov dominion.c >> unittestresult.out
+	gcov -f -b dominion.c >> unittestresult.out
 	
 	echo "cardtest1.c:" >> unittestresult.out
 	gcc -o cardtest1 -g  rngs.c dominion.c cardtest1.c $(CFLAGS)
 	./cardtest1 >> unittestresult.out
-	gcov dominion.c >> unittestresult.out
+	gcov -f -b dominion.c >> unittestresult.out
 
 	echo "cardtest2.c:" >> unittestresult.out
 	gcc -o cardtest2 -g  rngs.c dominion.c cardtest2.c $(CFLAGS)
 	./cardtest2 >> unittestresult.out
-	gcov dominion.c >> unittestresult.out
+	gcov -f -b dominion.c >> unittestresult.out
 
 	echo "cardtest3.c:" >> unittestresult.out
 	gcc -o cardtest3 -g  rngs.c dominion.c cardtest3.c $(CFLAGS)
 	./cardtest3 >> unittestresult.out
-	gcov dominion.c >> unittestresult.out
+	gcov -f -b dominion.c >> unittestresult.out
 
 	echo "cardtest4.c:" >> unittestresult.out
 	gcc -o cardtest4 -g  rngs.c dominion.c cardtest4.c $(CFLAGS)
 	./cardtest4 >> unittestresult.out
-	gcov dominion.c >> unittestresult.out
+	gcov -f -b dominion.c >> unittestresult.out
 
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
