@@ -20,15 +20,15 @@ char *inputString()
 {
   int i;
   int min = 2;   // Want at least 2 characters in the string
-  int max = 255; // No more than 255 in the string (to have null terminator)
+  int max = 6; // No more than 6 in the string (to have null terminator)
 
   int randStringSize = (rand() % (max - min)) + min;
 
   // Create a string of random size
-  char randString[256] = "";
+  char randString[7] = "";
   for (i = 0; i < randStringSize; i++)
   {
-    char randChar = inputChar();
+    char randChar = "rest"[rand() % 4];
 
     int len = strlen(randString);
     randString[len] = randChar;
@@ -74,13 +74,6 @@ void testme()
       printf("error ");
       exit(200);
     }
-
-    // Interrupt so that it exits and can be checked with gcov
-    // if (tcCount > 10000000)
-    // {
-    //   printf("10,000,000 iterations reached, exiting");
-    //   return 0;
-    // }
   }
 }
 
