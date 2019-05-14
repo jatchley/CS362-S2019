@@ -19,12 +19,6 @@ int checkVillage(int currPlayerPos, struct gameState *post)
   cardEffect(village, -1, -1, -1, post, 0, 0);
 
   // Mimic functionality between pre and post to check for mismatches
-  int nextPlayer = pre.numPlayers + 1;
-  if (nextPlayer > (pre.numPlayers - 1))
-  {
-    nextPlayer = 0;
-  }
-
   drawCard(currPlayerPos, &pre);
   pre.numActions = pre.numActions + 2;
   discardCard(0, currPlayerPos, &pre, 0);

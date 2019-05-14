@@ -4,36 +4,88 @@
 #include <stdio.h>
 #include <assert.h>
 #include "rngs.h"
+#include <time.h>
 
 // TODO: Finish this
-// Random Test for adventurer card
+// Random Test for Adventurer card
+int checkAdventurer(int currPlayerPos, struct gameState *post)
+{
+  struct gameState pre;
+  memcpy(&pre, post, sizeof(struct gameState));
+
+  int expectedCount = post->numActions + 2;
+
+  // Play Adventurer card on post state
+  cardEffect(adventurer, -1, -1, -1, post, 0, 0);
+
+  // Mimic functionality between pre and post to check for mismatches
+  pre.handCount[currPlayerPos] += 2;
+
+  // Compare pre and post states to validate test
+  int result = 0;
+  if (pre.handCount[currPlayerPos] == post->handCount[currPlayerPos])
+  {
+    result = 1;
+  }
+
+  return result;
+}
+
 int main()
 {
   // Declare test variables
-  int i;
+  int i, j, k;
   struct gameState state;
+  int possibleCards[10] = {adventurer, council_room, feast, gardens, mine, remodel, smithy, village, baron, great_hall};
   int currPlayerPos = 0;
-  int kingdomCards[10] = {adventurer, council_room, feast, gardens, mine, remodel, smithy, village, baron, great_hall};
   int numPlayers = 2;
-  int expectedCount = 0;
-  int randSeed = 1000;
+  int failureCount = 0;
+  int result;
 
   printf("----------------- Random Testing of Card: Adventurer ----------------\n");
 
-  // Clear the game state and initialize a new game instance
-  memset(&state, 23, sizeof(struct gameState));
-  initializeGame(numPlayers, kingdomCards, randSeed, &state);
+  SelectStream(2);
+  PutSeed(3);
 
-  // Play adventurer card
-  cardEffect(adventurer, -1, -1, -1, &state, 0, 0);
+  for (i = 0; i < 2000; i++)
+  {
+    for (j = 0; j < sizeof(struct gameState); j++)
+    {
+      ((char *)&state)[j] = floor(Random() * 256);
+    }
+    currPlayerPos = floor(Random() * numPlayers);
+    state.whoseTurn = currPlayerPos;
+    state.deckCount[currPlayerPos] = floor(Random() * MAX_DECK);
+    state.discardCount[currPlayerPos] = floor(Random() * (MAX_DECK - state.deckCount[currPlayerPos]));
+    state.handCount[currPlayerPos] = floor(Random() * MAX_HAND);
+    state.playedCardCount = floor(Random() * MAX_DECK);
 
-  // Test play of adventurer card for first player immediately after game startup
-  // Should be 7 (5 on start + 2 drawn)
-  expectedCount = 7;
-  if (state.handCount[currPlayerPos] == expectedCount)
-    printf("cardEffect(adventurer): PASS when test hand count after adventurer is played\n");
+    // TODO: Remove this if not used
+    // Fill hand with random cards
+    // for (k = 0; k < state.handCount[currPlayerPos]; k++)
+    // {
+    //   int randomCardPos = floor(Random() * 10);
+    //   int randomCard = possibleCards[randomCardPos];
+    //   state.hand[currPlayerPos][k] = randomCard;
+    // }
+
+    state.numActions = floor(Random() * 1000);
+    result = checkAdventurer(currPlayerPos, &state);
+
+    if (result != 0)
+    {
+      failureCount++;
+    }
+  }
+
+  if (failureCount > 0)
+  {
+    printf("Random testing of cardEffect(Adventurer) FAILED\n");
+  }
   else
-    printf("cardEffect(adventurer): FAIL when test hand count after adventurer is played\n");
+  {
+    printf("Random testing of cardEffect(Adventurer) PASSED\n");
+  }
 
   return 0;
 }
