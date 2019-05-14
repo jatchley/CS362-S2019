@@ -163,7 +163,7 @@ Creating 'dominion.c.gcov'
 
 randomtestcard2.c:
 ----------------- Random Testing of Card: GreatHall ----------------
-cardEffect(greatHall): FAIL when test hand count after GreatHall is played
+Random testing of cardEffect(GreatHall) FAILED
 Function 'councilRoomEffect'
 Lines executed:0.00% of 10
 Branches executed:0.00% of 6
@@ -193,9 +193,9 @@ Taken at least once:0.00% of 2
 Calls executed:0.00% of 2
 
 Function 'updateCoins'
-Lines executed:81.82% of 11
-Branches executed:100.00% of 8
-Taken at least once:75.00% of 8
+Lines executed:0.00% of 11
+Branches executed:0.00% of 8
+Taken at least once:0.00% of 8
 No calls
 
 Function 'gainCard'
@@ -205,15 +205,15 @@ Taken at least once:0.00% of 6
 Calls executed:0.00% of 1
 
 Function 'discardCard'
-Lines executed:84.62% of 13
+Lines executed:92.31% of 13
 Branches executed:100.00% of 6
-Taken at least once:50.00% of 6
+Taken at least once:66.67% of 6
 No calls
 
 Function 'cardEffect'
-Lines executed:3.79% of 211
+Lines executed:4.27% of 211
 Branches executed:12.85% of 179
-Taken at least once:1.12% of 179
+Taken at least once:1.68% of 179
 Calls executed:3.45% of 58
 
 Function 'getCost'
@@ -223,10 +223,10 @@ Taken at least once:0.00% of 28
 No calls
 
 Function 'drawCard'
-Lines executed:36.36% of 22
-Branches executed:33.33% of 6
-Taken at least once:16.67% of 6
-Calls executed:0.00% of 1
+Lines executed:95.45% of 22
+Branches executed:100.00% of 6
+Taken at least once:83.33% of 6
+Calls executed:100.00% of 1
 
 Function 'getWinners'
 Lines executed:0.00% of 24
@@ -297,10 +297,10 @@ Taken at least once:87.50% of 8
 Calls executed:100.00% of 2
 
 Function 'initializeGame'
-Lines executed:83.87% of 62
-Branches executed:95.65% of 46
-Taken at least once:80.43% of 46
-Calls executed:100.00% of 5
+Lines executed:0.00% of 62
+Branches executed:0.00% of 46
+Taken at least once:0.00% of 46
+Calls executed:0.00% of 5
 
 Function 'kingdomCards'
 Lines executed:0.00% of 13
@@ -319,15 +319,15 @@ Taken at least once:75.00% of 4
 No calls
 
 File 'dominion.c'
-Lines executed:19.62% of 586
-Branches executed:22.78% of 417
-Taken at least once:14.15% of 417
-Calls executed:11.58% of 95
+Lines executed:11.77% of 586
+Branches executed:11.27% of 417
+Taken at least once:5.28% of 417
+Calls executed:7.37% of 95
 Creating 'dominion.c.gcov'
 
 randomtestcardadventurer.c:
 ----------------- Random Testing of Card: Adventurer ----------------
-cardEffect(adventurer): PASS when test hand count after adventurer is played
+Random testing of cardEffect(Adventurer) FAILED
 Function 'councilRoomEffect'
 Lines executed:0.00% of 10
 Branches executed:0.00% of 6
@@ -345,9 +345,9 @@ No branches
 Calls executed:0.00% of 2
 
 Function 'adventurerEffect'
-Lines executed:64.71% of 17
-Branches executed:66.67% of 12
-Taken at least once:41.67% of 12
+Lines executed:94.12% of 17
+Branches executed:100.00% of 12
+Taken at least once:75.00% of 12
 Calls executed:50.00% of 2
 
 Function 'smithyEffect'
@@ -483,9 +483,9 @@ Taken at least once:75.00% of 4
 No calls
 
 File 'dominion.c'
-Lines executed:18.77% of 586
-Branches executed:23.26% of 417
-Taken at least once:14.63% of 417
+Lines executed:19.62% of 586
+Branches executed:24.22% of 417
+Taken at least once:15.59% of 417
 Calls executed:10.53% of 95
 Creating 'dominion.c.gcov'
 

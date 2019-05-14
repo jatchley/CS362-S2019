@@ -39,6 +39,7 @@ int main()
   int possibleCards[10] = {adventurer, council_room, feast, gardens, mine, remodel, smithy, village, baron, great_hall};
   int currPlayerPos = 0;
   int numPlayers = 2;
+  int randSeed = 1000;
   int failureCount = 0;
   int result;
 
@@ -49,10 +50,9 @@ int main()
 
   for (i = 0; i < 2000; i++)
   {
-    for (j = 0; j < sizeof(struct gameState); j++)
-    {
-      ((char *)&state)[j] = floor(Random() * 256);
-    }
+    memset(&state, 23, sizeof(struct gameState));
+    initializeGame(numPlayers, possibleCards, randSeed, &state);
+    
     currPlayerPos = floor(Random() * numPlayers);
     state.whoseTurn = currPlayerPos;
     state.deckCount[currPlayerPos] = floor(Random() * MAX_DECK);
@@ -67,6 +67,14 @@ int main()
     //   int randomCardPos = floor(Random() * 10);
     //   int randomCard = possibleCards[randomCardPos];
     //   state.hand[currPlayerPos][k] = randomCard;
+    // }
+    // TODO: Remove this if not used
+    // // Fill deck with random cards
+    // for (k = 0; k < state.deckCount[currPlayerPos]; k++)
+    // {
+    //   int randomCardPos = floor(Random() * 10);
+    //   int randomCard = possibleCards[randomCardPos];
+    //   state.deck[currPlayerPos][k] = randomCard;
     // }
 
     state.numActions = floor(Random() * 1000);

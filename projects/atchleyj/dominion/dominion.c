@@ -1446,8 +1446,8 @@ int villageEffect(int currentPlayer, struct gameState *state, int handPos)
 
   // Discard played card from hand
   // TODO: This is a bug. Correct line of code is below
-  // discardCard(handPos, currentPlayer, state, 0);
-  discardCard(0, 0, state, 1);
+  discardCard(handPos, currentPlayer, state, 0);
+  // discardCard(0, 0, state, 1);
   return 0;
 }
 
