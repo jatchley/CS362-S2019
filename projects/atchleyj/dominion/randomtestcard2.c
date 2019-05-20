@@ -6,7 +6,6 @@
 #include "rngs.h"
 #include <time.h>
 
-// TODO: Finish this
 // Random Test for GreatHall card
 int checkGreatHall(int currPlayerPos, struct gameState *post)
 {
@@ -58,15 +57,6 @@ int main()
     state.handCount[currPlayerPos] = floor(Random() * MAX_HAND);
     state.playedCardCount = floor(Random() * MAX_DECK);
 
-    // TODO: Remove this if not used
-    // Fill hand with random cards
-    // for (k = 0; k < state.handCount[currPlayerPos]; k++)
-    // {
-    //   int randomCardPos = floor(Random() * 10);
-    //   int randomCard = possibleCards[randomCardPos];
-    //   state.hand[currPlayerPos][k] = randomCard;
-    // }
-
     state.numActions = floor(Random() * 1000);
     result = checkGreatHall(currPlayerPos, &state);
 
@@ -78,7 +68,7 @@ int main()
 
   if (failureCount > 0)
   {
-    printf("Random testing of cardEffect(GreatHall) FAILED\n");
+    printf("Random testing of cardEffect(GreatHall) FAILURE COUNT: %d\n", failureCount);
   }
   else
   {

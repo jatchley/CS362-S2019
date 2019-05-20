@@ -1,5 +1,5 @@
 ----------------- Random Testing of Card: Village ----------------
-Random testing of cardEffect(village) FAILED
+Random testing of cardEffect(village) FAILURE COUNT: 4
 Function 'councilRoomEffect'
 Lines executed:0.00% of 10
 Branches executed:0.00% of 6
@@ -163,7 +163,7 @@ Creating 'dominion.c.gcov'
 
 randomtestcard2.c:
 ----------------- Random Testing of Card: GreatHall ----------------
-Random testing of cardEffect(GreatHall) FAILED
+Random testing of cardEffect(GreatHall) FAILURE COUNT: 4
 Function 'councilRoomEffect'
 Lines executed:0.00% of 10
 Branches executed:0.00% of 6
@@ -327,7 +327,7 @@ Creating 'dominion.c.gcov'
 
 randomtestcardadventurer.c:
 ----------------- Random Testing of Card: Adventurer ----------------
-Random testing of cardEffect(Adventurer) FAILED
+Random testing of cardEffect(Adventurer) FAILED. FAILURE COUNT: 2000
 Function 'councilRoomEffect'
 Lines executed:0.00% of 10
 Branches executed:0.00% of 6
