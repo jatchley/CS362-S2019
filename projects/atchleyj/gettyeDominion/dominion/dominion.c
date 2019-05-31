@@ -1384,7 +1384,7 @@ int adventurerFunction(int drawntreasure, int z, int currentPlayer, struct gameS
     drawCard(currentPlayer, state);
     cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer] - 1]; //top card of hand is most recently drawn card.
     // TODO: THIS IS A BUG
-    if (cardDrawn == copper || cardDrawn == silver || cardDrawn == silver)       //bug
+    if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)       //bug
       drawntreasure++;
     else
     {
@@ -1406,8 +1406,7 @@ int smithyFunction(int currentPlayer, struct gameState *state, int handPos)
 {
   int i;
   //+3 Cards
-  // TODO: THIS IS A BUG
-  for (i = 0; i <= 3; i++) //bug
+  for (i = 0; i < 3; i++) 
   {
     drawCard(currentPlayer, state);
   }
@@ -1438,8 +1437,7 @@ int great_hallFunction(int currentPlayer, struct gameState *state, int handPos)
   drawCard(currentPlayer, state);
 
   //+1 Actions
-  // TODO: THIS IS A BUG
-  //state->numActions++; bug
+  state->numActions++; 
 
   //discard card from hand
   discardCard(handPos, currentPlayer, state, 0);
